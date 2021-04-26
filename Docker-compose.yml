@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  database:
+    image: "postgres:13-alpine"
+    environment: 
+      POSTGRES_USER: "cours"
+      POSTGRES_DB: "cours"
+      POSTGRES_PASSWORD: "cours"
+    volumes:
+      - "cours:/var/lib/postgresql/data"
+    ports:
+      - 5432:5432
+
+volumes: 
+  cours:
