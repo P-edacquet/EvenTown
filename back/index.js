@@ -1,12 +1,19 @@
-const { Router } = require('express');
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
+const port = 3000;
 
-//app.get()
+app.use(bodyParser.json())
+app.use(
+    bodyParser.urlencoded({
+        extended: true
+    })
+)
 
+app.get('/', (req, res) => {
+    res.json({info: 'Node.js, Express, and Postgres API'})
+})
 
-console.log("Hello World")
-
-app.listen(3000, () => {
-    console.log ('Running on port 3000 !')
+app.listen(port, () => {
+    console.log(`App Running on port ${port}.`)
 })
