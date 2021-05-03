@@ -12,5 +12,11 @@ services:
     ports:
       - 5432:5432
 
+  application: 
+    image: "eventown:latest"
+    command: "node ./src/index.js"
+    ports:
+      - 3000:3000
+
 volumes: 
   cours:
