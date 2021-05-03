@@ -14,7 +14,7 @@ services:
 
   application: 
     image: "eventown:latest"
-    command: "node ./src/index.js"
+    command: "node ./back/index.js"
     ports:
       - 3000:3000
 
