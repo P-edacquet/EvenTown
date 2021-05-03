@@ -18,7 +18,7 @@ app.use(cors());
 
 app.get('/pin', async function (req, res) {
     const [rows, err] = await until(
-        knex.select(['pin_id', 'name'])
+        knex.select(['pin_id', 'name', 'lat'])
             .from('pin')
     )
 
@@ -41,6 +41,23 @@ app.get('/pin', async function (req, res) {
     });
 });
 
-app.listen(port, ()=> {
+app.post('/pin', function (req, res) {
+    const schema = joi.object({
+        name: joi.string()
+    })
+
+    const {error, value} = schema.validate(req.body)
+
+    if(error !== undefined){
+        console.log("ERROR::", error);
+        return res.status(500).json({
+            statusCode:500,
+            message: 'Internal Error'
+        })
+    }
+})
+
+
+app.listen(port, () => {
     console.log(`App listen on http://localhost:${port}/`)
 })
