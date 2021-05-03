@@ -18,7 +18,7 @@ app.use(cors());
 
 app.get('/pin', async function (req, res) {
     const [rows, err] = await until(
-        knex.select(['pin_id', 'name', 'lat'])
+        knex.select(['pin_id', 'name'])
             .from('pin')
     )
 
