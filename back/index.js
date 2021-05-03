@@ -10,7 +10,7 @@ let knex = require('knex')({
 const joi = require('joi');
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 3256;
 const cors = require('cors');
 app.use(express.json());
 app.use(cors());
