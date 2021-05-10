@@ -5,7 +5,7 @@ services:
     restart: always
     build:
       context: ./server
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: eventown_mern_nginx
     volumes:
       - /app/node_modules
@@ -47,6 +47,22 @@ services:
       ME_CONFIG_BASICAUTH_PASSWORD: admin123456
     volumes:
       - mongodb-data
+    networks:
+      - eventown_mern_api
+
+  client:
+    restart: always
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: eventown_mern_frontend
+    volumes:
+      - ./app/node_modules
+      - ./client:/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - eventown-api
     networks:
       - eventown_mern_api
 

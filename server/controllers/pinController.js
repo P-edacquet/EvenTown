@@ -5,19 +5,16 @@ const PinError = require('../utils/PinError');
 
 exports.createPin = AsyncManager(async (req, res, next) => {
     const newPin = await Pin.create(req.body);
-    return res.status(201).json({
-        success: true,
-        data: newPin
-    });
+    return res
+        .status(201)
+        .json(newPin);
 })
 
 exports.getAllPin = AsyncManager(async (req, res, next) => {
     const pins = await Pin.find();
-    return res.status(200).json({
-        success: true,
-        total: pins.length,
-        data: pins
-    })
+    return res
+        .status(200)
+        .json(pins)
 });
 
 exports.getPin = AsyncManager(async (req, res, next) => {
@@ -27,10 +24,9 @@ exports.getPin = AsyncManager(async (req, res, next) => {
         return next(new PinError(`That Pin is not available`, 404));
     }
 
-    return res.status(201).json({
-        success: true,
-        data: pin
-    });
+    return res
+        .status(201)
+        .json(pin);
 });
 
 exports.updatePin = AsyncManager(async (req, res, next) => {
@@ -45,10 +41,9 @@ exports.updatePin = AsyncManager(async (req, res, next) => {
         runValidators: true
     });
 
-    return res.status(201).json({
-        success: true,
-        data: pin
-    });
+    return res
+        .status(201)
+        .json(pin);
 });
 
 exports.deletePin = AsyncManager(async (req, res, next) => {
@@ -60,8 +55,9 @@ exports.deletePin = AsyncManager(async (req, res, next) => {
 
     await Pin.deleteOne();
 
-    return res.status(201).json({
-        success: true,
-        data: {}
-    });
+    return res
+        .status(201)
+        .json({
+            message: 'Pin deleted'
+        });
 });
