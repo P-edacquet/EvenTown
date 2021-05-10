@@ -3,7 +3,7 @@ const express = require('express');
 const connectToDB = require('./database/db');
 const ErrorsMiddleware = require('./middleware/errorMiddleware');
 const PinError = require('./utils/PinError');
-
+const pinRoutes = require('./routes/pinRoutes');
 
 process.on("uncaughtException", (error) => {
     console.log("Uncaught Exception..... stopping the server....");
@@ -24,6 +24,8 @@ app.get('/test', (req, res) => {
         Hi: "Welcome"
     });
 });
+
+app.use('/api/pins', pinRoutes);
 
 //Errors on routes using Error middleware
 app.all("*", ((req, res, next) => {
