@@ -1,5 +1,5 @@
-ifneq (,$(wildcard ./.env))
-	include .env
+ifneq (,$(wildcard ./server/.env))
+	include ./server/.env
 	export
 	ENV_FILE_PARAM = --env-file .env
 endif

@@ -25,7 +25,7 @@ app.get('/test', (req, res) => {
     });
 });
 
-app.use('/api/pins', pinRoutes);
+app.use('/api/v1/pins', pinRoutes);
 
 //Errors on routes using Error middleware
 app.all("*", ((req, res, next) => {
