@@ -14,7 +14,7 @@ provider "heroku" {
 }
 
 resource "heroku_app" "app_staging" {
-    name = "demo-micros-staging"
+    name = "eventown-staging"
     region = "eu"
 }
 
@@ -24,7 +24,7 @@ app  = heroku_app.app_staging.name
 }
 
 resource "heroku_app" "app_production" {
-    name = "demo-micros-production"
+    name = "eventown-production"
     region = "eu"
 }
 
@@ -34,7 +34,7 @@ app  = heroku_app.app_production.name
 }
 
 resource "heroku_pipeline" "pipeline" {
-    name = "demo-micros"
+    name = "eventown"
 }
 
 resource "heroku_pipeline_coupling" "stage-staging" {
