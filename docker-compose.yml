@@ -32,7 +32,6 @@ services:
       - mongodb-data:/data/db
     networks:
       - eventown_mern_api
-    command: | grep
 
   mongo-express:
     image: mongo-express
