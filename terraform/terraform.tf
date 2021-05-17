@@ -7,9 +7,8 @@ terraform {
     }
 }
 
-
 provider "heroku" {
-    email   = var.email_adress
+    email   = var.email_address
     api_key = var.heroku_api_key
 }
 
@@ -18,19 +17,9 @@ resource "heroku_app" "app_staging" {
     region = "eu"
 }
 
-resource "heroku_addon" "postgres_staging" {
-app  = heroku_app.app_staging.name
-  plan = "heroku-postgresql:hobby-dev"
-}
-
 resource "heroku_app" "app_production" {
     name = "eventown-production"
     region = "eu"
-}
-
-resource "heroku_addon" "postgres_production" {
-app  = heroku_app.app_production.name
-  plan = "heroku-postgresql:hobby-dev"
 }
 
 resource "heroku_pipeline" "pipeline" {

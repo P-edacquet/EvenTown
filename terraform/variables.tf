@@ -1,4 +1,4 @@
-variable "email_adress" {
+variable "email_address" {
     description = "Your Heroku email address"
 }
 
