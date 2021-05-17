@@ -5,17 +5,13 @@ const ErrorsMiddleware = require('./middleware/errorMiddleware');
 const PinError = require('./utils/PinError');
 const pinRoutes = require('./routes/pinRoutes');
 
-process.on("uncaughtException", (error) => {
-    console.log("Uncaught Exception..... stopping the server....");
-    console.log(error.name, error.message);
-    process.exit(1);
-});
+
 
 
 const app = express();
 app.use(express.json());
 
-app.use(express.static('client/build'));
+app.use(express.static(__dirname + '/client/build'));
 
 const PORT = process.env.PORT || 5000;
 connectToDB();
@@ -40,11 +36,3 @@ const server = app.listen(
     console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`)
 );
 
-
-process.on("unhandledRejection", (error) => {
-    console.log("unhandledRejection..... stopping the server....");
-    console.log(error.name, error.message);
-    server.close(() => {
-        process.exit(1);
-    });
-});
