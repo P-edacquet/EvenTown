@@ -6,12 +6,12 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
-    container_name: eventown_mern_nginx
+    container_name: eventown_mern_server
     volumes:
       - /app/node_modules
       - ./server:/app
-    #    ports:
-    #      - 5000:5000
+    ports:
+      - 5000:5000
     depends_on:
       - mongodb
     environment:
@@ -59,25 +59,25 @@ services:
     volumes:
       - ./app/node_modules
       - ./client:/app
-    #    ports:
-    #      - 3000:3000
+    ports:
+      - 3000:3000
     depends_on:
       - eventown-api
     networks:
       - eventown_mern_api
 
-  nginx:
-    restart: always
-    depends_on:
-      - eventown-api
-      - client
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
-    ports:
-      - 8080:80
-    networks:
-      - eventown_mern_api
+#  nginx:
+#    restart: always
+#    depends_on:
+#      - eventown-api
+#      - client
+#    build:
+#      context: ./nginx
+#      dockerfile: Dockerfile
+#    ports:
+#      - 8080:80
+#    networks:
+#      - eventown_mern_api
 
 networks:
   eventown_mern_api:
