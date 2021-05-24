@@ -4,12 +4,12 @@ services:
   eventown-api:
     restart: always
     build:
-      context: ./server
+      context: ./
       dockerfile: Dockerfile
     container_name: eventown_mern_server
     volumes:
       - /app/node_modules
-      - ./server:/app
+      - ./app
     ports:
       - 5000:5000
     depends_on:
