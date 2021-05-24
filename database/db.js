@@ -4,8 +4,8 @@ const connectToDb = async () => {
     const connect = await mongoose.connect(process.env.MONGO_URI, {
         authSource: "admin",
         auth: {
-            user: 'm_costa3',
-            password: '9ufKF.n93Z<^',
+            user: 'atlasAdmin',
+            password: 'p!nucYrHQWW3jc3',
         },
         useNewUrlParser: true,
         useCreateIndex: true,
