@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 
 const connectToDb = async () => {
     const connect = await mongoose.connect(process.env.MONGO_URI, {
-        dbName: process.env.DB_NAME,
+        authSource: "admin",
+        auth: {
+            user: 'm_costa3',
+            password: '9ufKF.n93Z<^',
+        },
         useNewUrlParser: true,
         useCreateIndex: true,
         useUnifiedTopology: true,

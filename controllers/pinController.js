@@ -4,7 +4,17 @@ const PinError = require('../utils/PinError');
 
 
 exports.createPin = AsyncManager(async (req, res, next) => {
-    const newPin = await Pin.create(req.body);
+    let newPin;
+    try {
+        newPin = await Pin.create(req.body);
+    } catch (e) {
+        console.log(e)
+        return res
+            .status(400)
+            .json({
+                error: e
+            })
+    }
     return res
         .status(201)
         .json(newPin);
